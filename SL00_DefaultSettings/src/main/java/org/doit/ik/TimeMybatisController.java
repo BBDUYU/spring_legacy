@@ -28,8 +28,10 @@ public class TimeMybatisController {
 		logger.info("> TimeMybatisContoller.time()");
 		
 		String currentTime = this.timeMapper.getTime();
+		String nextTime = this.timeMapper.getNextTime();
 		
 		model.addAttribute("currentTime", currentTime );
+		model.addAttribute("nextTime", nextTime );
 		
 		return "time";
 	}

@@ -8,6 +8,7 @@
 </head>
 <body>
 <h3>time.jsp</h3>
-<h3>현재 시간 : ${currentTime }</h3>
+<h3>현재 날짜 : ${currentTime }</h3>
+<h3>다음 날짜 : ${nextTime }</h3>
 </body>
 </html>
