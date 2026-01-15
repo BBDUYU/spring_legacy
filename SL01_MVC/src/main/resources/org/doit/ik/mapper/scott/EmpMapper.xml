@@ -4,14 +4,24 @@
   "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="org.doit.ik.mapper.scott.EmpMapper">
 	<!-- ArrayList<DeptDTO> selectDept(); -->
-	<select id="selectEmp" resultType="org.doit.ik.domain.EmpDTO">
+<!-- 	<select id="selectEmp" resultType="org.doit.ik.domain.EmpDTO">
 		SELECT *
 		FROM emp
+		ORDER BY
+		deptno ASC
+	</select> --> 	
+
+	<!-- ArrayList<EmpDTO> selectEmp(int deptnoArr[]); 10/30 -->
+	<select id="selectEmp" resultType="org.doit.ik.domain.EmpDTO"
+		parameterType="int[]">
+		SELECT *
+		FROM emp
+		<where>
+			<foreach item="deptno" index="index" collection="array"
+				open="deptno in (" separator="," close=")">
+				#{deptno}
+			</foreach>
+		</where>
 		ORDER BY deptno ASC
-	</select>
-	<select id="selectEmpByDeptno" resultType="org.doit.ik.domain.EmpDTO">
-		SELECT *
-		FROM emp
-		WHERE deptno = #{deptno}
 	</select>
 </mapper>
