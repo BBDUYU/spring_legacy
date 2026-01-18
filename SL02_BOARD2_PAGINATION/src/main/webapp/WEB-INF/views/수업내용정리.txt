@@ -1,0 +1,40 @@
+[수업 내용 정리]
+
+> Spring Legacy Project : SL02_BOARD2_PAGINATION
+
+ Board 게시판 기능 구현 + [페이징 처리 추가]
+ 
+ 1. 페이징 처리 필요한 정보           PageDTO.java
+    - 현재 페이지 번호    
+    - 다음/이전 페이지 이동 
+    -  [1]  2 3 4 5 6 7 8 9 10 > 
+      페이지 시작번호       끝번호  
+          
+ 2. org.doit.ik.domain.Criteria.java
+                       현재 페이지 번호
+                       한 페이지에 출력할 게시글 수
+    Criteria : 기준, 척도, 표준
+
+ 2-2. org.doit.ik.domain.PageDTO.java
+ 
+ 3. BoardController.java 새로 추가할 컨트롤러 메서드 X
+ 
+ 4. BoardMapper.java
+    BoardMapper.xml  매퍼파일   
+    
+ 5. BoardService.java
+    BoardServiceImple.java
+    
+ 6. BoardController.java  컨트롤러 메서드 수정    
+ 
+ 7. list.jsp 페이지 - 페이징 블럭 구현      
+
+
+
+
+
+
+        
+
+
+	
