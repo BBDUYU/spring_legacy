@@ -1,0 +1,6 @@
+[수업 내용 정리]
+
+> Spring Legacy Project : SL02_BOARD3_SEARCH
+
+[ 게시글 검색 처리 ] 
+ 
