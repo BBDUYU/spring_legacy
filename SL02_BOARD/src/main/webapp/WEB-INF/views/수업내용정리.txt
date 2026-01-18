@@ -1,0 +1,123 @@
+[수업 내용 정리]
+
+> Spring Legacy Project : SL02_BOARD 
+
+[ 스프링 게시판 구현 ]
+ 
+1. 테이블, 시퀀스 생성 
+	CREATE TABLE tbl_board
+	 (
+	     bno        number(10)
+	   , title      varchar2(200) not null
+	   , content    varchar2(2000) not null
+	   , writer     varchar2(50) not null
+	   , regdate    date default sysdate
+	   , updatedate date default sysdate
+	 ); 
+	alter table tbl_board 
+	add constraint pk_tblboard_bno primary key(bno);
+	 
+	CREATE SEQUENCE seq_board;   
+	
+2. org.doit.ik.domain.BoardVO.java
+   (주의) 테이블의 컬러명 == BoardVO의 필드명은 반드시 동일하게... 
+                             getter, setter 생성 => @Data
+3. 게시글 목록 보기
+  1) home.jsp
+     <a href='/board/list'>목록 보기</a>
+     
+  2) views/board/list.jsp   생성 및 추가 (포워딩)
+  3) org.doit.ik.controller.BoardController.java
+      list 컨트롤러 메서드 추가
+  3:00 수업시작~    
+  4) org.doit.ik.service.BoardService.java 인터페이스 선언***
+     org.doit.ik.service.BoardServiceImpl.java 클래스 선언***
+  
+  5) org.doit.ik.mapper.BoardMapper.java 인터페이스 추가***
+                        BoardMapper.xml  매퍼파일    추가    
+
+
+4. 게시글 쓰기
+  1) list.jsp
+     <a href="/board/register">글쓰기</a>     
+  2) views/board/register.jsp   생성 및 추가 (포워딩)
+  
+  3) org.doit.ik.controller.BoardController.java
+      글쓰기 폼 구현된 페이지로 이동시키는  컨트롤러 메서드 추가
+      인증/권한 체크한 후에    
+      
+      /board/register + GET 컨트롤러 메서드 추가 
+     
+      /board/register + POST 컨트롤러 메서드 추가
+      
+  4) org.doit.ik.service.BoardService.java 인터페이스 선언***
+     org.doit.ik.service.BoardServiceImpl.java 클래스 선언***
+  
+  5) org.doit.ik.mapper.BoardMapper.java 인터페이스 추가***
+                        BoardMapper.xml  매퍼파일    추가  
+
+
+  6) 게시글 쓰기 + 글번호(bno) 반환해서   list.jsp 경고창(bno 글 저장)
+
+5. 게시글 상세 보기
+  1) <a href="/board/get?bno=${ board.bno }"><c:out value="${ board.title }" /></a>
+  2) org.doit.ik.controller.BoardController.java
+        /board/get  + GET   컨트롤러 메서드 선언 
+  3)      BoardService.java
+          BoardServiceImpl.jav
+  4)      BoardMapper.java
+          BoardMapper.xml    
+   
+6. 게시글 상세 보기  -> 수정 버튼 클릭 [게시글 수정]
+  1) <button type="button"  data-oper="modify" class="edit">Modify</button>
+     수정 버튼을 클릭
+     formObj
+	  .attr({
+		  "method": "get", 
+		  "action": "/board/modify"
+	  }) 
+	  .submit();
+  2)   org.doit.ik.controller.BoardController
+     /board/modify + GET    컨트롤러 메서드 선언.
+     modify.jsp 에서 수정할 값을 입력.... -> 수정버튼을 클릭.     
+  3)  org.doit.ik.controller.BoardController
+     /board/modify + POST   컨트롤러 메서드 선언.
+          실제 서비스+DAO   UPDATE 처리
+  4)      BoardService.java
+          BoardServiceImpl.jav
+          BoardMapper.java
+          BoardMapper.xml  
+          
+7. 게시글 삭제  
+  1)  get.jsp     삭제 버튼을 클릭
+      /board/remove?bno=6&title=<b>오늘은+금용일...<%2Fb>&content=<b>오늘은+금용일...<%2Fb>&writer=문종범
+  2) BoardController.java 
+     컨트롤러 메서드 추가
+  3) BoardService.java   Imple.java 추가
+  4) BoardMapper.java, BoardMapper.xml 추가
+  5) list.jsp 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
+
+
+	
