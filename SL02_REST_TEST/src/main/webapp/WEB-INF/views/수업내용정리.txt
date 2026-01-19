@@ -1,0 +1,11 @@
+수업내용정리
+1. 아이디 입력받아서 중복체크하는 ajax 처리
+
+2. emp empno == 아이디
+3. mapper 패키지 - EmpMapper.java 인터페이스
+4. 				   EmpMapper.xml
+5. service 패키지 - EmpService.java 인터페이스
+				  - EmpServiceImpl.java 클래스
+6. controller 패키지 - EmpController
+
+/empnoCheck/
