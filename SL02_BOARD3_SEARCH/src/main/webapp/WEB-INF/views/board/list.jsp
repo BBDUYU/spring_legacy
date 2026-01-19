@@ -1,4 +1,4 @@
-<%@ page trimDirectiveWhitespaces="true" %>
+<%@ page trimDirectiveWhitespaces="true" %>   
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
@@ -92,13 +92,17 @@
           	<div class="pagination">
           	   <!-- [1] 2 3 4 5 6 7 8 9 10 > -->
           	   <!-- 1. 이전 prev -->
-          	   <c:if test="${ pageMaker.prev }">&laquo;</c:if>
+          	   <c:if test="${ pageMaker.prev }">
+          	   	<a href="${ pageMaker.startPage-1 }">&laquo;</a>
+          	   </c:if>
           	   <!-- 2. 1 2  ... 10 -->
           	   <c:forEach begin="${ pageMaker.startPage }" end="${ pageMaker.endPage }" step="1" var="num">
           	   <a href="${ num }" class="${ num eq pageMaker.criteria.pageNum ? 'active': '' }">${ num }</a>
           	   </c:forEach>
           	   <!-- 3. 다음 next -->
-          	   <c:if test="${ pageMaker.next }">&raquo;</c:if>
+          	   <c:if test="${ pageMaker.next }">
+          	   <a href="${ pageMaker.endPage+1 }">&raquo;</a>
+          	   </c:if>
           	</div>
           </div>
         </td>
@@ -110,6 +114,8 @@
     <input type="hidden" name="pageNum" value="${ pageMaker.criteria.pageNum }">
     <input type="hidden" name="amount" value="${ pageMaker.criteria.amount }">
     <!-- 검색관련 검색조건, 검색어 등등 -->
+    <input type="hidden" name="type" value="${ pageMaker.criteria.type }">
+    <input type="hidden" name="keyword" value="${ pageMaker.criteria.keyword }">
   </form>
   
 </div>
@@ -162,6 +168,21 @@
 		    .submit();
 	  }); //  $(".pagination a").on("click",
 	  
+			  
+		
+	  //  [5] 검색버튼 클릭
+	  var searchForm = $("#searchForm");
+	  $("#searchForm button").on("click",function(){
+		  
+		  if(!searchForm.find("input[name=keyword]").val()){
+			  alert("검색어를 입력하세요");
+			  return;
+		  }
+		  event.preventDefault();
+		  searchForm.submit();
+	  })
+	  $("#type").val('${empty param.type ? "T" : param.type}');
+	  $("#searchForm [name=keyword]").val('<c:out value="${pageMaker.criteria.keyword}"/>');
   }); // $(function (){
 </script>  
 </body>

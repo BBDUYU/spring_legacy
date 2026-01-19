@@ -1,4 +1,4 @@
-<%@ page trimDirectiveWhitespaces="true" %>
+<%@ page trimDirectiveWhitespaces="true" %>   
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
@@ -61,6 +61,8 @@
 	  <input type="hidden" name="${ _csrf.parameterName }" value="${ _csrf.token }">
 	  <input type="hidden" name="pageNum" value="${ criteria.pageNum }">
       <input type="hidden" name="amount" value="${ criteria.amount }">
+      <input type="hidden" name="type" value="${ criteria.type }">
+      <input type="hidden" name="keyword" value="${ criteria.keyword }">
       
     </form>
   

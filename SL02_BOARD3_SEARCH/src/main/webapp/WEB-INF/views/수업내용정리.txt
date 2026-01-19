@@ -4,3 +4,101 @@
 
 [ 게시글 검색 처리 ] 
  
+ 1. list.jsp 에서 검색 form 태그 체크
+ 2. 검색
+ 	1) 단일 항목 검색 : 제목(t), 내용(c), 작성자(w)
+ 	   다중 항목 검색 : tc, tw, tcw
+ 	
+ 	2) 검색조건 : type		select
+ 	   검색어   : keyword 	input
+ 	   
+ 3. mybatis 수정
+
+ <select id="getListWithPaging" resultType="org.doit.ik.domain.BoardVO">
+    <![CDATA[
+     SELECT bno, title, content, writer, regdate, updatedate
+	 FROM (
+	    SELECT /*+INDEX_DESC(tbl_board pk_tblboard_bno )*/
+	           rownum rn, bno, title, content, writer, regdate, updatedate
+	    FROM tbl_board 
+	    // 검색조건에 따른 코딩추가
+	    <if test="type == 'T'.toString()">
+	    	title LIKE '%검색어%' -- 제목 검색
+	    </if>
+	    content LIKE '%검색어%' -- 내용 검색
+	    writer LIKE '%검색어%' -- 작성자 검색
+	    
+	    title LIKE '%검색어%' OR content LIKE '%검색어%' -- 다중 검색
+	    title LIKE '%검색어%' OR content LIKE '%검색어%' OR writer LIKE '%검색어%'-- 다중 검색
+	   	
+	   	<choose>
+	   		<when test="type=='T'.toString()">
+	   			title LIKE '%검색어%'
+	   		</when>
+	   	</choose>
+	   	
+	    AND rownum <= #{pageNum} * #{amount}
+	   )
+	 WHERE rn > (#{pageNum} - 1) * #{amount}
+    ]]>
+  </select>
+  
+  4. 검색 조건을 처리하기위해서 Criteria 클래스 수정
+  
+  5. BoardMapper.xml 코딩 수정
+  
+  6. 검색버튼 클릭 이벤트 처리		list.jsp
+  
+  <input type="hidden" name="type" value="${ criteria.type }">
+  <input type="hidden" name="keyword" value="${ criteria.keyword }">
+  추가  
+  
+  7. 수정 / 삭제 처리는 BoardController.java 에서 redirect 방식으로 처리
+  	 type, keyword를 redirect시 포함시켜야 함
+  	   
+  검색 처리 과정 이해
+  1. 검색조건, 검색어 입력 -> 검색버튼 클릭
+  		action = "/board/list"
+  		method = "get"
+  		
+  		name="TC"&keyword=검색어&pageNum=1&amount=10
+  		
+  		<form id="searchForm" action="/board/list" method="get">
+             <select id="type" name="type">
+               <option value="T">제목</option>
+               <option value="C">내용</option>
+               <option value="W">작성자</option>
+               <option value="TC">제목+내용</option>
+               <option value="TW">제목+작성자</option>
+               <option value="TCW">제목+내용+작성자</option>
+             </select>
+             <input type="text" name="keyword" style="padding: 7px"> 
+             <button type="button" style="min-height: 32px">Search</button>
+             
+             <input type="hidden" name="pageNum" value="${ pageMaker.criteria.pageNum }">
+             <input type="hidden" name="amount" value="${ pageMaker.criteria.amount }">
+              
+           </form>
+  2. 요청에 해당되는 컨트롤러 메서드 찾아서 확인
+  3. this.boardService.getListWithPaging(criteria) 서비스 클래스의 메서드 확인
+  4. this.boardMapper.getListWithPaging(criteria) 확인
+  	 BoardMapper.xml
+  	 <select id="getListWithPaging"> 확인
+  	 #{pageNum} == criteria.getPageNum()
+  	 #{amount} == criteria.getAmount()
+  	 #{keyword} == criteria.getKeyword()
+  	 <foreach collection="typeArr" -> criteria.getTypeArr
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  

@@ -134,6 +134,9 @@ public class BoardController {
 		
 		rttr.addAttribute("pageNum", criteria.getPageNum());
 		rttr.addAttribute("amount", criteria.getAmount());
+		
+		rttr.addAttribute("type", criteria.getType());
+		rttr.addAttribute("keyword", criteria.getKeyword());
 		return "redirect:/board/get";
 	}
 
@@ -141,13 +144,21 @@ public class BoardController {
 	// GET + /board/remove?bno=6&title=<b>오늘은+금용일...<%2Fb>&content=<b>오늘은+금용일...<%2Fb>&writer=문종범
 	@GetMapping("/remove")
 	public String remove(@RequestParam("bno") Long bno
-			, RedirectAttributes rttr) {
+			, RedirectAttributes rttr
+			, @ModelAttribute("criteria")Criteria criteria) {
 		log.info("> 👍👍👍 BoardController.remove()... GET");
 
 		if( this.boardService.remove(bno) ) {
-			rttr.addFlashAttribute("result", "REMOVESUCCESS");
-			rttr.addFlashAttribute("bno", bno); // 삭제된 글 번호
-		}
+	         rttr.addFlashAttribute("result", "REMOVESUCCESS");
+	         rttr.addAttribute("bno", bno);
+	         int totalPages = (int)(Math.ceil((double)this.boardService.getTotal(criteria)/criteria.getAmount()));
+	         if( criteria.getPageNum() > totalPages ) criteria.setPageNum(totalPages == 0? 1:totalPages);
+	         rttr.addAttribute("pageNum", criteria.getPageNum());
+	         rttr.addAttribute("amount", criteria.getAmount());
+	         // 추가부분
+	         rttr.addAttribute("type", criteria.getType());
+	          rttr.addAttribute("keyword", criteria.getKeyword());
+	      } // if 
 
 		return "redirect:/board/list";
 	}
