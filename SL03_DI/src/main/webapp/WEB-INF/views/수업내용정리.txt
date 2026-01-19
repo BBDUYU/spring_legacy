@@ -1,0 +1,10 @@
+270p - mvc 기본흐름
+
+스프링 DI
+	의존성 주입
+
+1) org.doit.ik.di 패키지
+	ㄴ Record.java 인터페이스
+	ㄴ RecordImpl.java 클래스
+2) org.doit.ik.di.test 패키지
+	ㄴ Ex01.java + main()
