@@ -1,10 +1,12 @@
 package org.doit.ik.di2;
 
 import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 
 //application-context.xml 파일과 동일한 역할을 하는 자바 클래스
 @Configuration
+//@ComponentScan()
 public class Config {
 	 // 1. RecordImpl record = new RecordImpl(); 
 	 // <bean id="record" class="org.doit.ik.di.RecordImpl"></bean>
