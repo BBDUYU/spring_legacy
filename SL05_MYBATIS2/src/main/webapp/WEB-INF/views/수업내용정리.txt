@@ -1,0 +1,13 @@
+[수업내용정리.txt]
+
+- SL05_MYBATIS2 -
+
+조인(JOIN) 쿼리 처리
+dept/emp/salgrade 테이블 3개 조인
+
+- DeptEmpSalgradeMapper.xml	 매퍼 XML 파일
+- DeptEmpSalgradeMapper.java 인터페이스
+- DeptEmpSalgradeController.java 컨트롤러 추가
+
+- /dept/emp 요청 URL 사용 home.jsp <a> 링크태그 추가
+
