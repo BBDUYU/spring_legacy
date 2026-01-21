@@ -1,0 +1,50 @@
+[수업내용정리.txt]
+
+- SL05_MYBATIS -
+
+1.
+  <!-- https://mvnrepository.com/artifact/org.mybatis/mybatis p91-->
+  <dependency>
+      <groupId>org.mybatis</groupId>
+      <artifactId>mybatis</artifactId>
+      <version>3.4.6</version>
+  </dependency>
+  
+  <!-- https://mvnrepository.com/artifact/org.mybatis/mybatis-spring -->
+  <dependency>
+      <groupId>org.mybatis</groupId>
+      <artifactId>mybatis-spring</artifactId>
+      <version>1.3.2</version>
+  </dependency>
+      
+2. 핵심 클래스는 SqlSessionFactory Bean과 SqlSession Templat
+
+3. mybatis 실습
+  1) HomeController.java -> 복사 -> ScottController.java
+      ㄴ 컨트롤러 메서드 선언
+  2) scott 폴더
+      ㄴ dept.jsp 뷰페이지
+  3) home.jps : <a href="/scott/dept">/scott/dept</a>
+  4) org.doit.ik.domain
+      ㄴ DeptDTo.java
+     org.doit.ik.mapper 패키지
+      ㄴ DeptMapper.java 인터페이스 추가
+   
+  5) root-context.xml
+   <!-- [1] p567 SqlSessionTemplate을 이용한 DAO 구현 -->   
+   <bean id="" class="org.mybatis.spring.SqlSessionTemplate">
+     <constructor-arg ref="sqlSessionFactoryBean"></constructor-arg>
+   </bean> 
+   
+  6) org.doit.ik.mapper 패키지
+      ㄴ DeptMapperDao.java 클래스 추가    
+         sqlSessionTemplate.selectList() 메서드를 사용해서 구현
+  7) ScottController.dept() 컨트롤러 메서드
+      
+  8) dept.jsp 뷰페이지    
+      
+      
+      
+  X) src/main/resources         사용 X
+      ㄴ mybatis 폴더 추가
+         ㄴ DeptMappter.xml
