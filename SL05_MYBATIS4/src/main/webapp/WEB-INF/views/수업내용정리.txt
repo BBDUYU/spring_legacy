@@ -1,0 +1,12 @@
+[수업내용정리.txt]
+
+- SL05_MYBATIS3 -
+
+> 매퍼 XML 파일을 수정 : <resultMap> 태그를 사용해서 수정
+
+https://mybatis.org/mybatis-3/ko/sqlmap-xml.html
+
+[resultMap]
+ - 데이터베이스 결과데이터를 객체에 로드하는 방법을 정의하는 엘리먼트
+ - resultMap엘리먼트는 마이바티스에서 *** 가장 중요하고 강력한 엘리먼트 *** 이다.
+ - ResultMap은 간단한 구문에서는 매핑이 필요하지 않고 *** 복잡한 구문에서 관계를 서술 ***하기 위해 필요하다.
