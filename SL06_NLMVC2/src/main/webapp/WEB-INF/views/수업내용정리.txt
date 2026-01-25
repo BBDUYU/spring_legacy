@@ -1,0 +1,39 @@
+[수업내용정리]
+NoticeController.java          X
+NoticeDetailController.java    X
+:
+:
+
+[ SL06_NLMVC2 ]
+1) CustomerController.java        O
+  공지사항목록();      //  컨트롤러메서드 추가 + 구현
+  공지사항상세보기();  //  컨트롤러메서드 추가 + 구현
+  
+2) servlet-context.xml
+   자동 빈 객체 생성 + 주입
+   <bean>  
+   <bean>  
+   <bean>  
+   
+   
+3) 공지사항 글쓰기
+   (1) 목록 notice.jsp
+
+4) 공지사항 수정하기....
+   (2) noticeDetail.jsp 수정버튼    noticeEdit.htm + GET
+       컨트롤러 메서드 선언.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 	
