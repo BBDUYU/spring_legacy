@@ -1,0 +1,13 @@
+[수업내용정리]
+
+SL07_UPLOAD2_AJAX
+
+[실습]
+/ajax/user 요청 -> /ajax/upload.jsp 포워딩
+                       output
+                       attach [ajax file upload 버튼]
+                       
+                       write
+                       email
+                       
+                       submit
