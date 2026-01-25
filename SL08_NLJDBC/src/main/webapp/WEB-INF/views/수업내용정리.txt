@@ -1,0 +1,9 @@
+[수업내용정리]  	  스프링 JDBC 사용해보자. 
+p473(475검색) Chapter 11 데이터베이스 연동 지원과 JDBC 지원  
+
+  1) DataSource의 설정 방법
+  2) JdbeTemplate과 같은 클래스를 이용해서
+    JDBC 기반의 데이터베이스 연동 구현 방법을 살펴보도록 하자.
+
+1. SL06_NLMVC3_ATTACHEDFILE -> SL08_NLJDBC
+ 
