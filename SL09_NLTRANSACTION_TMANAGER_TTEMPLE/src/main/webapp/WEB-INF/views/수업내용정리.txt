@@ -1,0 +1,42 @@
+[수업내용정리]  	  스프링 트랜잭션 처리 
+
+1. SL08_NLJDBC2 -> SL09_NLTRANSACTION_TMANAGER_TTEMPLE 505p
+
+2. root-context.xml
+	1) TransactionManager 등록
+	2) transactionTemplate 등록
+
+3. 실습
+	1) a.공지사항 글 쓰기 + b.작성자의 포인트 1증가
+					트랜잭션처리
+			insert					update
+	
+	2)  포인트 컬럼도 추가
+		포인트 제약조건 : 3보다 크다면 강제로 오류 발생하는 제약조건 설정
+		
+			
+	
+
+		ALTER TABLE MEMBER
+		ADD CONSTRAINT CK_MEMBER_POINT CHECK (POINT <= 3);
+		
+		
+		ALTER TABLE NOTICES
+		ADD CONSTRAINT PK_NOTICES_ID PRIMARY KEY (SEQ);
+		
+		
+		ALTER TABLE NOTICES
+		ADD CONSTRAINT UK_NOTICES_TITLE UNIQUE (TITLE);
+		
+		select id,point
+		from member
+		where id='user';
+		
+		update member
+		set point = 1
+		where id='user';
+		commit;
+			
+	메서드 추가
+	NoticeDAO.java
+	
