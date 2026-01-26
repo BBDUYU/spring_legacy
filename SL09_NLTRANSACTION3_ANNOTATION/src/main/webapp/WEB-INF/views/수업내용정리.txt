@@ -1,0 +1,8 @@
+[수업내용정리]  	  스프링 트랜잭션 처리 
+
+1. SL09_NLTRANSACTION_TMANAGER_TTEMPLE -> SL09_NLTRANSACTION2_TXADVICE
+	1) 트랜잭션 매니저			522p 선언적 트랜잭션 처리방법
+	2) 트랜잭션 템플릿			<tx:advice> 태그를 이용한 트랜잭션처리
+								servlet-context.xml
+
+2.	SL09_NLTRANSACTION2_TXADVICE -> SL09_NLTRANSACTION3_ANNOTATION
