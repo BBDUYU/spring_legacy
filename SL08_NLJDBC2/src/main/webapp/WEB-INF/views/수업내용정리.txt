@@ -1,0 +1,42 @@
+[수업내용정리]  	  스프링 JDBC 사용해보자. 
+p473(475검색) Chapter 11 데이터베이스 연동 지원과 JDBC 지원  
+
+  1) DataSource의 설정 방법
+  2) JdbeTemplate과 같은 클래스를 이용해서
+    JDBC 기반의 데이터베이스 연동 구현 방법을 살펴보도록 하자.
+
+1. SL08_NLJDBC -> SL08_NLJDBC2
+	JdbcTemplate		[NamedParameter]JdbcTemplate 496p
+		?				:파라미터이름
+
+2. NoticeDao.java	인터페이스 수정
+	NoticeDaoImpl.java 클래스
+
+3. org.doit.ik.HomeController.java
+	index.htm -> HomeController -> index.jsp / index.css 메인페이지 응답
+	
+4. Notice 공지사항 CRUD
+
+5. 회원가입 
+	index.jsp
+	  ㄴ  <a href="joinus/join.htm">회원가입</a> 확인
+	  ㄴ  컨트롤러 메서드 구현
+	  		JoinContoller.java
+	  			ㄴ 
+	  ㄴ  /joinus/join.jsp
+
+6. join.jsp 페이지 확인
+
+7. JoinController
+	
+	- 문제점
+		Birth - null
+		Habit - on
+		저장
+		
+8. 334p
+
+	  
+[과제]
+회원가입시 아이디 중복체크하는 ajax 처리 구현
+ 
