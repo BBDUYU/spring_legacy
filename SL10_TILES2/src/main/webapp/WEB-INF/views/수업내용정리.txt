@@ -1,0 +1,48 @@
+[수업내용정리]  	  스프링 트랜잭션 처리 
+
+1.  SL09_NLTRANSACTION5_ISOLATION -> SL10_TILES2
+
+2. 	타일즈 관련 설정
+
+3. 	webapp 폴더 jsp -> WEB-INF/views/jsp 이동
+	ㄴ customer			ㄴ customer
+	ㄴ joinus			ㄴ joinus
+	   jsp 삭제				jsp
+
+4.	페이지 모듈화
+	1) WEB-INF/views 폴더
+				ㄴ inc 폴더	==	layout 폴더
+					ㄴ header.jsp
+					ㄴ footer.jsp
+					ㄴ layout.jsp	==	template.jsp
+	
+				ㄴ customer 폴더
+						ㄴ inc 폴더
+							ㄴ visual.jsp
+							ㄴ aside.jsp
+							
+				ㄴ joinus 폴더
+						ㄴ inc 폴더
+
+5. notice.jsp 에서 페이지 모듈화
+6. join.jsp에서 페이디 모듈화
+
+7. HomeController.java
+   CustomerController.java
+   JoinController.java
+   return "customer.notice";
+   return "customer.noticeReg";
+   return "customer.noticeDetail";
+   return "customer.noticeDelete";
+   
+   return "notice.jsp"; //포워딩 
+   
+8. tiles.xml definition 태그 정의
+   
+   
+   
+   
+   
+   
+   
+   
