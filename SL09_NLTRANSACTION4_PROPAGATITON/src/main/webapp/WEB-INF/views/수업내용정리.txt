@@ -1,0 +1,62 @@
+[수업내용정리]  	  스프링 트랜잭션 처리 
+
+1. SL09_NLTRANSACTION3_ANNOTATION -> SL09_NLTRANSACTION4_PROPAGATITON
+
+2. 511p 전파방식
+	현재 진행중인 트랜잭션 메서드 호출 안에서
+	중첩된 트랜잭션을 어떻게 처리할 지를 결정하는 속성
+	
+	예)
+	@Transactional - 트랜잭션 처리
+	aaa(){
+		insert();	// 1
+		test();
+		update();	// 2
+	}
+	
+	@T
+	test(){
+		update();
+		delete();
+	}
+	
+	aaa();
+
+3. 실습
+
+	@T
+	NoticeDaoImpl.insertAndPointUpOfMember(){
+		A. 공지사항 글쓰기 insert..
+		B. 작성자	포인트 update..
+	}
+	
+	kenik	1
+	t1		2
+	t2		3  X
+	
+--	
+	@T
+	NoticeDaoImpl.insert(){ <- insertAndPointUpOfMember()
+		A. 공지사항 글쓰기 insert..
+		B. 작성자 포인트 update..
+	}
+	
+	@T
+	NoticeDaoImpl.insertAndPointUpOfMember(){
+		insert();
+		insert();
+	}
+	
+-- user / 1
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
