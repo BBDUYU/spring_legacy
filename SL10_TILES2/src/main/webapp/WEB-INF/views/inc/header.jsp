@@ -4,7 +4,7 @@
 <div id="header">
 	<div class="top-wrapper">
 		<h1 id="logo">
-			<a href="../index.jsp"><img src="../images/logo.png" alt="뉴렉처" /></a>
+			<a href="${ pageContext.request.contextPath }/index.htm"><img src="${ pageContext.request.contextPath }/images/logo.png" alt="뉴렉처" /></a>
 		</h1>
 		<h2 class="hidden">메인메뉴</h2>
 		<ul id="mainmenu" class="block_hlist">
@@ -21,16 +21,16 @@
 		</form>
 		<h3 class="hidden">로그인메뉴</h3>
 		<ul id="loginmenu" class="block_hlist">
-			<li><a href="../index.jsp">HOME</a></li>
-			<li><a href="../joinus/login.jsp">로그인</a></li>
-			<li><a href="../joinus/join.jsp">회원가입</a></li>
+			<li><a href="${ pageContext.request.contextPath }/index.htm">HOME</a></li>
+			<li><a href="${ pageContext.request.contextPath }/joinus/login.htm">로그인</a></li>
+			<li><a href="${ pageContext.request.contextPath }/joinus/join.htm">회원가입</a></li>
 		</ul>
 		<h3 class="hidden">회원메뉴</h3>
 		<ul id="membermenu" class="clear">
-			<li><a href=""><img src="../images/menuMyPage.png"
+			<li><a href=""><img src="${ pageContext.request.contextPath }/images/menuMyPage.png"
 					alt="마이페이지" /></a></li>
-			<li><a href="notice.jsp"><img
-					src="../images/menuCustomer.png" alt="고객센터" /></a></li>
+			<li><a href="${ pageContext.request.contextPath }/customer/notice.htm"><img
+					src="${ pageContext.request.contextPath }/images/menuCustomer.png" alt="고객센터" /></a></li>
 		</ul>
 	</div>
 </div>

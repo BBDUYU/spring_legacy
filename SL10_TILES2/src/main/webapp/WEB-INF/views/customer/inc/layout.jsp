@@ -10,7 +10,7 @@
 	<head>
 		<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
 		<title>index</title>
-		<link href="notice.css" type="text/css" rel="stylesheet" />
+		<link href="${ pageContext.request.contextPath }/customer/notice.css" type="text/css" rel="stylesheet" />
 	</head>
 	<body>
 		<!-- header start -->

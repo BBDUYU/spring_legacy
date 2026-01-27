@@ -41,7 +41,7 @@
 		<p class="article-comment margin-small">
 			<!-- <a class="btn-save button" href="noticeEdit.htm">수정</a> -->
 			<input type="submit" class="btn-save button" value="[수정]" /> <a
-				class="btn-cancel button" href="noticeDetail.htm">취소</a>
+				class="btn-cancel button" href="noticeDetail.htm?seq=${noticeVO.seq}">취소</a>
 		</p>
 	</form>
 </div>

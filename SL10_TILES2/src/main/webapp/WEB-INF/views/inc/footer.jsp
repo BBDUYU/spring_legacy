@@ -4,7 +4,7 @@
 <div id="footer">
 	<div class="top-wrapper">
 		<h2>
-			<img src="../images/footerLogo.png" alt="뉴렉처" />
+			<img src="${ pageContext.request.contextPath }/images/footerLogo.png" alt="뉴렉처" />
 		</h2>
 		<p>
 		<address id="ad">
