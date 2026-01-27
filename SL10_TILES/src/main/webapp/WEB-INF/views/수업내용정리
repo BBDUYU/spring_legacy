@@ -1,0 +1,77 @@
+[수업내용정리]
+
+1. SL00_DefaultSettings -> SL10_TILES
+2. SL09_NLTRANSACTIONS_ISOLATION -> SL10_TILES2   X
+
+3. 페이지 모듈화(집중화)
+	ㄴ 페이지마다 공통적인 부분을 집중화해서 공통으로 참조
+	   하도록 만드는 방법을 페이지 모듈화
+	ㄴ 스프링에서는 페이지 모듈화를 할 수 있도록 타일즈 라는 방법 제공
+	
+4. https://tiles.apache.org/  
+
+		 <dependency>
+           <groupId>org.apache.tiles</groupId>
+           <artifactId>tiles-extras</artifactId>
+           <version>${org.apache.tiles-version}</version>
+         </dependency>
+         <dependency>
+            <groupId>org.apache.tiles</groupId>
+            <artifactId>tiles-core</artifactId>
+            <version>${org.apache.tiles-version}</version>
+          </dependency>  
+          <dependency>
+            <groupId>org.apache.tiles</groupId>
+            <artifactId>tiles-servlet</artifactId>
+            <version>${org.apache.tiles-version}</version>
+          </dependency>
+          <dependency>
+            <groupId>org.apache.tiles</groupId>
+            <artifactId>tiles-jsp</artifactId>
+            <version>${org.apache.tiles-version}</version>
+          </dependency>
+
+5. servlet-context.xml
+
+	<!--  Tiles  -->
+    <beans:bean id="tilesConfigurer" class="org.springframework.web.servlet.view.tiles3.TilesConfigurer">
+      <beans:property name="definitions">
+        <beans:list>
+          <beans:value>/WEB-INF/tiles/tiles.xml</beans:value>
+        </beans:list>
+      </beans:property>
+    </beans:bean>
+    
+    <beans:bean id="tilesViewResolver" class="org.springframework.web.servlet.view.UrlBasedViewResolver">
+      <beans:property name="viewClass" value="org.springframework.web.servlet.view.tiles3.TilesView" />
+      <beans:property name="order" value="1" />
+    </beans:bean>
+    
+6. WEB-INF/tiles/tiles.xml 확인
+
+7. 페이지 모듈화
+	1) w3ss 폴더
+		ㄴ css폴더
+			ㄴ flexbox.css 파일
+	
+	2) webapp 폴더
+		ㄴ w3ss_layout_flexbox.jsp
+		
+	3) views 폴더
+		ㄴ city 폴더 추가
+			ㄴ london.jsp
+			ㄴ paris.jsp
+			ㄴ seoul.jsp
+			ㄴ layout 폴더 추가
+				ㄴ nav.jsp
+				ㄴ template.jsp
+				
+		ㄴ layout 폴더 추가 -- 전체 페이지에서 사용할 모듈
+			ㄴ header.jsp	파일추가
+			ㄴ footer.jsp	파일추가
+			ㄴ template.jsp 파일추가
+
+	
+
+
+
