@@ -1,0 +1,67 @@
+[수업내용정리]  	  스프링 트랜잭션 처리 
+
+1. 	SL09_NLTRANSACTION4_PROPAGATITON -> SL09_NLTRANSACTION5_ISOLATION
+
+2. 	전파방식 X -> 글쓰기 insert(); 두번호출 X
+   	체크 제약조건 point < 3 삭제
+   	제목 유일성 제약조건 삭제
+   
+   	ALTER TABLE MEMBER DROP CONSTRAINT CK_MEMBER_POINT;
+	ALTER TABLE NOTICES DROP CONSTRAINT UK_NOTICES_TITLE;
+	
+3.	트랜잭션의 격리 레벨 (ISOLATION)
+	ㄴ 트랜잭션 처리 과정에서 두개 이상의 트랜잭션이 서로 동시에 같은 자원을
+	   접근할 때의 각각의 트랜잭션은 어떻게 처리하는 가에 대한 속성
+	   
+
+NoticeDao 인터페이스
+	1) 조회수 증가 hitUp()
+	2) 조회수 읽어오는 getHit()
+관련 코딩 추가...
+
+--
+4. 용어 개념 이해
+	1) Dirty Read 상황
+		[@T 			hipUp()		커밋/롤백	]
+		seq=10  hit=10 update 11		X
+									^ 
+								조회수 읽기
+								@T getHit()
+								
+	2) Non-Repeatable Read 상황
+			반복
+		반복적인 작업이 두번이상
+		[@T getHit()		@T getHit()	]
+		seq=10 hit=10		seq=10 hit=11
+						^
+					@T hitUp()
+					seq=10 hit=11
+					
+	3) Phantom Read 상황
+		여러개의 레코드를 읽어오는 작업 + 반복
+		[emp 30 부서원 조회			emp 30 부서원 조회]
+		1									1
+		2									2
+		3									3
+		4									4
+		5									5
+		6
+								^
+						emp 30 6 사원 수정/삭제
+						
+	오라클
+	READ_COMMITTED(디폴트) : Dirty Read 상황은 발생 X
+						   : Non-Repeatable Read 상황 발생 가능성 O
+						   
+	SERIALIZABLE		   : 모든 로우(행)을 잠그는 옵션
+						     Phantom Read 발생 X
+
+
+	
+	
+	
+	
+	
+	
+	
+	
