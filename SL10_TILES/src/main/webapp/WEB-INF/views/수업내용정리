@@ -71,7 +71,11 @@
 			ㄴ footer.jsp	파일추가
 			ㄴ template.jsp 파일추가
 
-	
-
+	4) 컨트롤러
+	@GetMapping("/london")
+	public String london() {
+		log.info("> CityController.java");
+		return "city/london.tiles"; //타일즈 뷰 이름
+	}
 
 
