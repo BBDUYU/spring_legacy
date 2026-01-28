@@ -4,7 +4,23 @@
    "http://tiles.apache.org/dtds/tiles-config_3_0.dtd">
    
 <tiles-definitions>
+
+	<definition name="base" template="/WEB-INF/views/city/layout/template.jsp">
+   	<put-attribute name="header" value="/WEB-INF/views/layout/header.jsp"></put-attribute>
+   	<put-attribute name="footer" value="/WEB-INF/views/layout/footer.jsp"></put-attribute>
+   	</definition>
+   	<definition name="home.tiles" extends="base">
+   		<put-attribute name="article" value="/WEB-INF/views/home.jsp"/>
+   	</definition>
+   	<definition name="basecity" extends="base">
+   		<put-attribute name="nav" value="/WEB-INF/views/city/layout/nav.jsp"></put-attribute>
+   	</definition>
+   	
+ 	<definition name="*/*.tiles" template="/WEB-INF/views/city/layout/template.jsp">
+	   	<put-attribute name="article" value="/WEB-INF/views/{1}/{2}.jsp"></put-attribute>
+   	</definition>
    <!-- city/london.tiles -->
+   <!-- 
    <definition name="city/london.tiles" template="/WEB-INF/views/city/layout/template.jsp">
    <put-attribute name="header" value="/WEB-INF/views/layout/header.jsp"></put-attribute>
    <put-attribute name="nav" value="/WEB-INF/views/city/layout/nav.jsp"></put-attribute>
@@ -25,6 +41,7 @@
    <put-attribute name="article" value="/WEB-INF/views/city/paris.jsp"></put-attribute>
    <put-attribute name="footer" value="/WEB-INF/views/layout/footer.jsp"></put-attribute>
    </definition>
+    -->
 </tiles-definitions>
 
 
