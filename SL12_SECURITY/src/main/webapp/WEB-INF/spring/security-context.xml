@@ -18,9 +18,24 @@
 			access="hasRole('ROLE_ADMIN')" />
 		<intercept-url pattern="/**" access="permitAll" />
 
-		<form-login login-page="/joinus/login.htm" default-target-url="/index.htm"/>
-		<logout  logout-url="/joinus/logout.htm" invalidate-session="true" logout-success-url="/"/>
-
+		<form-login 
+		login-page="/joinus/login.htm" 
+		default-target-url="/index.htm" 
+		authentication-failure-url="/joinus/login.htm?error=true"
+		authentication-success-handler-ref="" />
+		<logout  
+		logout-url="/joinus/logout.htm" 
+		invalidate-session="true" 
+		logout-success-url="/"/>
+		
+		<!-- [1] 403 접근금지 오류 -->
+		<!-- CommonController.java -->
+		<!-- 
+		<access-denied-handler error-page="/common/accessError.htm"/>
+ 		-->
+ 		<!-- [2] 403 접근금지 오류 시 다양한 처리를 한 후에 특정 페이지 이동-->
+ 		<access-denied-handler ref="customAccessDeniedHandler"/>
+ 		
 	</http>
 	<authentication-manager>
 		<authentication-provider>

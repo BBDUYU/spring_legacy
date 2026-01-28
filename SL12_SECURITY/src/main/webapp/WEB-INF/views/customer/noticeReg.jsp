@@ -33,6 +33,8 @@
 			<input class="btn-save button" type="submit" value="저장" /> <a
 				class="btn-cancel button" href="notice.htm">취소</a>
 		</p>
+		<!-- POST 방식의 요청에 반드시 아래 CSRF 토큰이 있어야 된다. -->
+         <input type="hidden" name="${_csrf.parameterName }" value="${_csrf.token }">
 	</form>
 </div>
 

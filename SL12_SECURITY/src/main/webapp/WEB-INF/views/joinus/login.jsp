@@ -11,7 +11,7 @@
 	</ul>
 	<h3 class="hidden">회원가입 폼</h3>
 	<div id="join-form" class="join-form margin-large">
-	<c:if test='${param.error eq "" }'>
+	<c:if test='${param.error eq true }'>
 		<div>
            <strong style="color:red">아이디 또는 패스워드가 일치하지 않습니다..</strong>
            <br />
