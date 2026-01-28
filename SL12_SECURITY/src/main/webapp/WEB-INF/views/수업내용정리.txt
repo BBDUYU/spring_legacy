@@ -1,0 +1,107 @@
+[수업내용정리]       스프링의 시큐리티 처리
+
+1. SL11_MYBATIS -> SL12_SECURITY
+
+2. Spring Security 전체 처리 과정
+  1) 클라이언트 요청
+  
+  2) 시큐리티(보안) 진입점 - 필터
+      web.xml 필터 등록
+  org.springframework.web.filtere.DelegatingFilterProxy
+  
+  에러) org.springframework.beans.factory.NoSuchBeanDefinitionException
+    - 실제 보안(인증, 인가) 처리 X
+    - SecurityFilterChain 빈에게 위임
+    
+  3) FilterChainProxy 보안 컨트롤 타워
+    - 여러개의 SecurityFilterChain 중 요청 URL에 맞는 체인 선택
+    - matches()    /admin/**  관리자    체인
+                /api/**    API    체인
+                
+  4) 요청 URL에 맞는 체인 -> SecurityFilterChain 실행
+                    ㄴ SecurityContextHolderFilter  : 보안 처리 시작 ~ 끝
+                      ㄴ Authentication Filters ( 인증 처리 )
+                          - UsernamePasswordAuthenticationFilter
+                          - BearerTokenAuthenticationFilter (JWT)
+                          - BasicAuthenticationFilter : 인증 요청 감지, 인증 정보 추출, AuthenticationManager에 위임 
+                         Authentication  authenticate(Authentication authentication)
+                         : 인증 성공 Authentication 객체 생성
+                           -> SecurityContextHolder에 저장
+                         : 인증 실패 시 AuthenticationException 발생
+                      ㄴ ExceptionTranslationFilter
+                      ㄴ AuthorizationFilter
+ 
+  5) AuthenticationManager
+     -> AuthenticationProvider : 실제 인증 처리 담당자
+     
+  6) ExceptionTranslationFilter : 보안 예외를 HTTP 응답으로 변환
+     AuthenticationException 401 / 로그인
+     AccessDeniedException    403
+     
+  7) AuthorizationFilter ( 인가 처리 )
+     ㄴ 인증된 사용자 권한 확인
+     ㄴ 접근 가능 여부 판단
+     ㄴ AuthorizationManager.check(...)
+     
+     연결해주는 코딩.
+     authorizeHttpRequests()
+     @PreAuthorize
+     hasRole()
+     
+  8) 인가 실패 AccessDeniedException 발생
+  
+  9) DispatcherServlet MVC 패턴으로 처리... 응답
+     
+----------------------------------------------------------------------------------------------------------------------
+
+3. p654(656) ~ p726 스프링 시큐리티
+  1) 보안 요구
+   - 역할의 종류 :  ROLE_USER, ROLE_ADMIN, ROLE_MANAGER
+   - 경로별 접근 제한
+     (1) /customer/noticeReg.htm 공지사항 쓰기 : 인증된 사용자만 접근
+     (2) /customer/noticeDel.htm,
+         /customer/noticeEdit.htm
+         공지사항 수정,삭제 : 작성자로 인증, 관리자만 접근            
+     (3) 그 외 요청은 모두에게 인증 X, 권한 X 허용..
+     
+  2) pom.xml 의존 모듈 확인
+    <dependency>
+      <groupId>org.springframework.security</groupId>
+      <artifactId>spring-security-web</artifactId>
+      <version>${org.springframework-version}</version>
+   </dependency>
+
+   <dependency>
+      <groupId>org.springframework.security</groupId>
+      <artifactId>spring-security-config</artifactId>
+      <version>${org.springframework-version}</version>
+   </dependency>
+
+   <dependency>
+      <groupId>org.springframework.security</groupId>
+      <artifactId>spring-security-core</artifactId>
+      <version>${org.springframework-version}</version>
+   </dependency>
+
+   <!-- https://mvnrepository.com/artifact/org.springframework.security/spring-security-taglibs -->
+   <dependency>
+      <groupId>org.springframework.security</groupId>
+      <artifactId>spring-security-taglibs</artifactId>
+      <version>${org.springframework-version}</version>
+   </dependency>
+   
+  3) 스프링 시큐리티 XML 파일 설정
+  java.lang.IllegalArgumentException: There is no PasswordEncoder mapped for the id "null"
+  
+  667p
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
