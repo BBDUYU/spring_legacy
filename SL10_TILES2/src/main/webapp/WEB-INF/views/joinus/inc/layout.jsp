@@ -9,8 +9,8 @@
    <head>
       <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
       <title>index</title>
-      <link href="${ pageContext.request.contextPath }/joinus/join.css" type="text/css" rel="stylesheet" />
-      <link href="${ pageContext.request.contextPath }/joinus/login.css" type="text/css" rel="stylesheet" />
+      
+      <link href='${ pageContext.request.contextPath }/joinus/<tiles:getAsString name="css"/>.css' type="text/css" rel="stylesheet" />
       
       <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
    </head>

@@ -9,6 +9,7 @@
    <head>
       <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
       <title>index</title>
+      <title><tiles:getAsString name="title"/></title>
       <link href="index.css" type="text/css" rel="stylesheet" />
    </head>
    <body>
