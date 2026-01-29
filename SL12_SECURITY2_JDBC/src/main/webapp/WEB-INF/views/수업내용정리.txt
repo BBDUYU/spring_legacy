@@ -1,0 +1,27 @@
+[수업내용정리]       스프링의 시큐리티 처리
+
+1. SL12_SECURITY -> SL12_SECURITY2_JDBC
+
+2. Oracle : Member 테이블 - 회원 정보
+	[ 685p DB를 이용한 인증처리 ]
+	
+	alter table member
+	add constraint pk_member_id primary key(id);
+	
+	
+	alter table member
+	modify (pwd varchar2(100));
+	
+	CREATE TABLE member_authorities
+	(
+	    username VARCHAR2(50) 
+	  , authority VARCHAR2(50) 
+	  , CONSTRAINT FK_memberauthorities_USERNAME  FOREIGN KEY(username) REFERENCES member(id)
+	);
+  
+  
+  
+  
+  
+  
+  
