@@ -8,8 +8,9 @@
 		<li>고객센터</li>
 		<li>공지사항수정</li>
 	</ul>
-	<form action="" method="post" enctype="multipart/form-data">
-
+	<!-- <form action="" method="post" enctype="multipart/form-data"> -->
+<form action="/customer/noticeEdit.htm?${_csrf.parameterName}=${_csrf.token}"
+    method="post" enctype="multipart/form-data">
 		<div id="notice-article-detail" class="article-detail margin-large">
 			<dl class="article-detail-row">
 				<dt class="article-detail-title">제목</dt>

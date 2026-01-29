@@ -46,5 +46,6 @@
 			</user-service>
 		</authentication-provider>
 	</authentication-manager>
-
+	
+	<!-- <csrf disabled="true"/> -->
 </beans:beans>

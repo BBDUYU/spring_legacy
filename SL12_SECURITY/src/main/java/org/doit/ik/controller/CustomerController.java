@@ -2,6 +2,7 @@ package org.doit.ik.controller;
 
 import java.io.File;
 import java.io.IOException;
+import java.security.Principal;
 import java.sql.SQLException;
 import java.util.List;
 
@@ -125,6 +126,8 @@ public class CustomerController {
 			NoticeVO noticeVO   // 커맨드 객체 
 			, RedirectAttributes rttr
 			, HttpServletRequest request
+			, Principal principal
+	         // , @AuthenticationPrincipal UserDetails user
 			) throws ClassNotFoundException, SQLException, IllegalStateException, IOException {
 		// 1. 
 		String uploadRealPath = null;
@@ -141,9 +144,9 @@ public class CustomerController {
 			noticeVO.setFilesrc(fileSystemName);
 		} // if
 
-		noticeVO.setWriter("user");
+		noticeVO.setWriter(principal.getName());
 //		this.noticeDao.insertAndPointUpOfMember(noticeVO,"user");
-		this.memberShipService.insertAndPointUpOfMember(noticeVO,"user");
+		this.memberShipService.insertAndPointUpOfMember(noticeVO,principal.getName());
 		return "redirect:notice.htm";
 		
 	} 
