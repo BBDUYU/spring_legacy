@@ -1,0 +1,38 @@
+[수업내용정리]
+
+1. REST (Representational State Transfer)
+	ㄴ 웹 기반 애플리케이션에서 자원을 효율적으로 관리하고
+		전달하기 위한 소프트웨어 아키텍처 스타일
+	
+	ㄴ HTTP 프로토콜 기반으로 한 웹 API 설계에 사용된다
+	ㄴ 웹 상의 모든 자원(이미지, 사용자, 게시글 등)
+	ㄴ REST : 하나의 고유 자원을 나타내는 URI + 전송방식(get, post, put, delete) 작업을 지정
+	
+	예)
+	http://localhost/member/
+
+2. REST 어노테이션
+	426+2p XML/JSON 변환처리
+	
+3. pom.xml		JSON/XML	변환시키는 의존 모듈
+
+	자바객체 -> json 문자열로 변환시켜서 클라이언트한테 응답	
+	 <dependency>	-	json 데이터를 처리하기위한 라이브러리
+         <groupId>com.fasterxml.jackson.core</groupId>
+         <artifactId>jackson-databind</artifactId>
+         <version>2.9.5</version>
+      </dependency>
+
+	XML 처리
+      <dependency>	-	
+         <groupId>com.fasterxml.jackson.dataformat</groupId>
+         <artifactId>jackson-dataformat-xml</artifactId>
+         <version>2.9.5</version>
+      </dependency>
+      
+4. 실습
+	1) SampleController.java
+	2) AjaxController.java
+		mapper.AjaxMapper.java 인터페이스
+		mapper.AjaxMapper.xml  매퍼파일
+		ajax.jsp
